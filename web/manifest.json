@@ -1,6 +1,6 @@
 {
-    "name": "flutter_todo",
-    "short_name": "flutter_todo",
+    "name": "todo_flutter",
+    "short_name": "todo_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
