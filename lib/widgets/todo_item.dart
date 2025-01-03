@@ -22,9 +22,15 @@ class TodoItem extends StatelessWidget {
       splashColor: const Color.fromARGB(50, 255, 255, 255),
       title: Text(
         todo['title'],
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600 , fontFamily: GoogleFonts.poppins().fontFamily),
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            fontFamily: GoogleFonts.poppins().fontFamily),
       ),
-      subtitle: Text(todo['description'] , style: TextStyle(fontSize: 15, fontFamily: GoogleFonts.poppins().fontFamily)),
+      subtitle: Text(todo['description'],
+          style: TextStyle(
+              fontSize: 15, fontFamily: GoogleFonts.poppins().fontFamily)),
       trailing: Text(
         todo['isCompleted'] ? '✅' : '❌',
         style: const TextStyle(fontSize: 25),
