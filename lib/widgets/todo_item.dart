@@ -6,30 +6,27 @@ class TodoItem extends StatelessWidget {
   final VoidCallback onDelete;
 
   const TodoItem({
-    Key? key,
+    super.key,
     required this.todo,
     required this.onToggleComplete,
     required this.onDelete,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: GestureDetector(
-        onTap: onToggleComplete,
-        child: Text(
-          todo['isCompleted'] ? '✅' : '❌',
-          style: const TextStyle(fontSize: 25),
-        ),
-      ),
+      contentPadding: EdgeInsets.symmetric(horizontal: 20),
+      onTap: onToggleComplete,
+      onLongPress: onDelete,
+      splashColor: const Color.fromARGB(50, 255, 255, 255),
       title: Text(
         todo['title'],
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
       ),
       subtitle: Text(todo['description']),
-      trailing: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.red),
-        onPressed: onDelete,
+      trailing: Text(
+        todo['isCompleted'] ? '✅' : '❌',
+        style: const TextStyle(fontSize: 25),
       ),
     );
   }

@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class UserAvatar extends StatelessWidget {
-  const UserAvatar({Key? key}) : super(key: key);
+  const UserAvatar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,7 @@ class UserAvatar extends StatelessWidget {
 
             if (shouldLogout ?? false) {
               await FirebaseAuth.instance.signOut();
+              await GoogleSignIn().signOut();
               Navigator.of(context).pushReplacementNamed('/login');
             }
           },

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/add_todo_dialog.dart';
 
 class AddTodoButton extends StatelessWidget {
-  const AddTodoButton({Key? key}) : super(key: key);
+  const AddTodoButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,9 @@ class AddTodoButton extends StatelessWidget {
           },
         );
       },
-      backgroundColor: Colors.blue,
-      child: const Icon(Icons.add, color: Colors.white),
+      backgroundColor: Colors.white,
+      splashColor: Colors.grey,
+      child: const Icon(Icons.add, color: Colors.black),
     );
   }
 }

@@ -5,28 +5,38 @@ import 'package:todo_flutter/widgets/todo_list.dart';
 import 'package:todo_flutter/widgets/user_avatar.dart';
 
 class ToDoApp extends StatelessWidget {
-  const ToDoApp({Key? key}) : super(key: key);
+  const ToDoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
         decoration: const BoxDecoration(
-          color: Colors.white,
           image: DecorationImage(
               image: AssetImage('assets/bgImage.png'),
               fit: BoxFit.cover,
-              opacity: 0.2),
+              opacity: 0.7),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            toolbarHeight: 130,
+            surfaceTintColor: Colors.transparent,
+            toolbarHeight: 80,
             backgroundColor: Colors.transparent,
-            actions: [UserAvatar()],
             flexibleSpace: Padding(
-              padding: const EdgeInsets.only(top: 60),
-              child: Image.asset('assets/logo.png'),
+              padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image(
+                    image: AssetImage('assets/logo.png'),
+                    width: 100,
+                    height: 100,
+                  ),
+                  UserAvatar(),
+                ],
+              ),
             ),
           ),
           body: ToDoBody(),
@@ -37,17 +47,23 @@ class ToDoApp extends StatelessWidget {
 }
 
 class ToDoBody extends StatelessWidget {
-  const ToDoBody({Key? key}) : super(key: key);
+  const ToDoBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     final User? user = FirebaseAuth.instance.currentUser;
 
     return Stack(
       children: [
         TodoList(),
-        user != null ? AddTodoButton() : const SizedBox.shrink(),
+        if (user != null)
+          Positioned(
+            width: MediaQuery.of(context).size.width,
+            bottom: 35,
+            child: Center(
+              child: AddTodoButton(),
+            ),
+          ),
       ],
     );
   }

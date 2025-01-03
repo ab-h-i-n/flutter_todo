@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   Future<UserCredential?> _signInWithGoogle() async {
     try {
@@ -73,6 +74,7 @@ class LoginScreen extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.w800,
+                            fontFamily: GoogleFonts.poppins().fontFamily,
                           ),
                         ),
                       ],
